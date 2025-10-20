@@ -21,8 +21,29 @@ variable "cluster_name" {
   default     = "gke-terraform-cluster"
 }
 
-variable "tf_state_bucket" {
-  description = "GCP bucket state"
+# variable "tf_state_bucket" {
+#   description = "GCP bucket state"
+#   type = string
+#   default = "terraform-state-bucket"
+# }
+
+# Workload Identity / CI 
+variable "github_repo" {
+  description = "Github repo in the format owner/repo (used to restirct WIF)"
   type = string
-  default = "terraform-state-bucket"
+  default = ""
+}
+
+variable "github_branch" {
+  description = "Optional branch  restriction for WIF (e.g. refs/heads/main)"
+  type = string
+  default = "refs/heads/main"
+}
+
+# Artifact registry
+
+variable "artifact_repo_id" {
+  description = "Artifact Registry repository id (docker)"
+  type = string
+  default = "express-app-repo"
 }
